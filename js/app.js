@@ -29,6 +29,7 @@ let CSSvars = [
             let dY = rotateParent.centerY - mouse.clientY;
             let yDeg = Utils.mapScale(dY, -windowHeight / 2, windowHeight / 2, -maxRotateAngle, maxRotateAngle);
             root.style.setProperty(this.variableName, yDeg + "deg");
+
         }
     },
     {
@@ -37,6 +38,11 @@ let CSSvars = [
             let dX = rotateParent.centerX - mouse.clientX;
             let xDeg = Utils.mapScale(dX, -windowWidth / 2,  windowWidth / 2 , -maxRotateAngle, maxRotateAngle);
             root.style.setProperty(this.variableName, -xDeg + "deg");
+            if(xDeg > 0) {
+                document.querySelector("noseridge").setAttribute("direction","l");
+            } else {
+                document.querySelector("noseridge").setAttribute("direction","r");
+            }
         }
     }
 ]
@@ -56,11 +62,7 @@ window.addEventListener("resize", () => {
 })
 
 
-
-
-
 function handleOrientation(event) {
-  console.log("hi");
   var x = event.beta;  // In degree in the range [-180,180]
   var y = event.gamma; // In degree in the range [-90,90]
   console.log(x,y);
