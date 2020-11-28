@@ -197,6 +197,7 @@ noggin {
   width: 300px;
   height: 450px;
   transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
+  transform-origin: 50% 50% -100px;
   position: relative;
   transform-style: preserve-3d;
   background: white;
@@ -268,11 +269,11 @@ noggin {
     background: black;
     top: -80px;
     transform: translateZ(-25px);
-    border-radius: 120px 120px 100px 100px;
+    border-radius: 150px 150px 100px 100px;
     transform-style: preserve-3d; }
   noggin fronthair {
     position: absolute;
-    top: 0px;
+    top: -20px;
     width: 110%;
     left: -5%;
     transform: translateZ(25px);
@@ -280,9 +281,9 @@ noggin {
     transform-style: preserve-3d; }
     noggin fronthair bang {
       position: absolute;
-      height: 100px;
+      height: 120px;
       background: black;
-      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25); }
+      box-shadow: 0px 10px 0px rgba(0, 0, 0, 0.15); }
       noggin fronthair bang:first-child {
         left: 0;
         width: 70%;
@@ -297,7 +298,7 @@ noggin {
     left: 10%;
     height: 60px;
     background: #BBB;
-    top: 35%;
+    top: 34%;
     transform: translateZ(25px) rotateX(20deg);
     border-radius: 0 0 50px 50px;
     background: white;

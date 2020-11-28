@@ -64,7 +64,7 @@ function handleOrientation(event) {
   var x = event.beta;  // In degree in the range [-180,180]
   var y = event.gamma; // In degree in the range [-90,90]
   console.log(x,y);
-  root.style.setProperty("--rotate-x", -x + "deg");
+  root.style.setProperty("--rotate-x", 45 - x + "deg");
   root.style.setProperty("--rotate-y", y + "deg");
   document.querySelector(".log").innerText = x + "," + y;
  
