@@ -79,3 +79,83 @@ function handleOrientation(event) {
 }
 
 window.addEventListener('deviceorientation', handleOrientation);
+
+
+function handlePermission() {
+
+navigator.permissions.query({name:'geolocation'}).then(function(result) {
+    if (result.state == 'granted') {
+      report(result.state);
+      
+    } else if (result.state == 'prompt') {
+      report(result.state);
+      
+      
+    } else if (result.state == 'denied') {
+      report(result.state);
+      
+    }
+    result.onchange = function() {
+      report(result.state);
+    }
+  });
+}
+
+
+  function report(state) {
+  console.log('Permission ' + state);
+}
+
+// handlePermission();
+
+
+
+
+const permissionsToRequest = {
+  permissions: ["bookmarks", "history"],
+  origins: ["https://developer.mozilla.org/"]
+}
+
+function requestPermissions() {
+
+  function onResponse(response) {
+    if (response) {
+      console.log("Permission was granted");
+    } else {
+      console.log("Permission was refused");
+    }
+    return browser.permissions.getAll();  
+  }
+
+  browser.permissions.request(permissionsToRequest)
+    .then(onResponse)
+    .then((currentPermissions) => {
+    console.log(`Current permissions:`, currentPermissions);
+  });
+}
+
+// document.querySelector("body").addEventListener("click", requestPermissions);
+
+
+
+function permission () {
+    if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
+        // (optional) Do something before API request prompt.
+        DeviceMotionEvent.requestPermission()
+            .then( response => {
+            // (optional) Do something after API prompt dismissed.
+            if ( response == "granted" ) {
+                window.addEventListener( "devicemotion", (e) => {
+                    // do something for 'e' here.
+                })
+            }
+        })
+            .catch( console.error )
+    } else {
+        alert( "DeviceMotionEvent is not defined" );
+    }
+}
+const btn = document.querySelector( "body" );
+btn.addEventListener( "click", permission );
+
+
