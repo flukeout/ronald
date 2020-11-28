@@ -60,6 +60,7 @@ window.addEventListener("resize", () => {
 
 
 function handleOrientation(event) {
+  console.log("hi");
   var x = event.beta;  // In degree in the range [-180,180]
   var y = event.gamma; // In degree in the range [-90,90]
   console.log(x,y);
@@ -73,6 +74,6 @@ function handleOrientation(event) {
 
 // console.log(window.DeviceOrientationEvent);
 
-//     if (window.DeviceOrientationEvent) {
-//         window.addEventListener('deviceorientation', handleOrientation);
-//       }
+    if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', handleOrientation);
+      }
