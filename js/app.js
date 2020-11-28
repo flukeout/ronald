@@ -28,7 +28,7 @@ let CSSvars = [
         set : function (mouse)  {
             let dY = rotateParent.centerY - mouse.clientY;
             let yDeg = Utils.mapScale(dY, -windowHeight / 2, windowHeight / 2, -maxRotateAngle, maxRotateAngle);
-            root.style.setProperty(this.variableName, yDeg + "deg");
+            document.querySelector(".ralph").style.setProperty(this.variableName, yDeg + "deg");
 
         }
     },
@@ -37,7 +37,7 @@ let CSSvars = [
         set : function (mouse)  {
             let dX = rotateParent.centerX - mouse.clientX;
             let xDeg = Utils.mapScale(dX, -windowWidth / 2,  windowWidth / 2 , -maxRotateAngle, maxRotateAngle);
-            root.style.setProperty(this.variableName, -xDeg + "deg");
+            document.querySelector(".ralph").style.setProperty(this.variableName, -xDeg + "deg");
             if(xDeg > 0) {
                 document.querySelector("nose").setAttribute("direction","l");
             } else {
@@ -46,8 +46,6 @@ let CSSvars = [
         }
     }
 ]
-
-
 
 setParentDetails();
 
@@ -65,16 +63,10 @@ window.addEventListener("resize", () => {
 function handleOrientation(event) {
   var x = event.beta;  // In degree in the range [-180,180]
   var y = event.gamma; // In degree in the range [-90,90]
-  root.style.setProperty("--rotate-x", 45 - x + "deg");
-  root.style.setProperty("--rotate-y", y + "deg");
-  // document.querySelector(".log").innerText = x + "," + y;
- 
+  document.querySelector(".ralph").setProperty("--rotate-x", 45 - x + "deg");
+  document.querySelector(".ralph").style.setProperty("--rotate-y", y + "deg");
 }
 
-
-
-// console.log(window.DeviceOrientationEvent);
-
-    if (window.DeviceOrientationEvent) {
-        window.addEventListener('deviceorientation', handleOrientation);
-      }
+if (window.DeviceOrientationEvent) {
+    window.addEventListener('deviceorientation', handleOrientation);
+}
