@@ -156,6 +156,7 @@ function permission () {
     }
 }
 const btn = document.querySelector( "body" );
-btn.addEventListener( "click", permission );
+// btn.addEventListener( "click", permission );
+btn.addEventListener( "touchstart", permission );
 
 
