@@ -324,6 +324,7 @@ noggin {
     left: 25%;
     height: 100px;
     background: #DDD;
+    box-sizing: border-box;
     bottom: 30px;
     transform: translateZ(25px);
     border-radius: 50px;
@@ -345,6 +346,6 @@ noggin {
     background: white;
     border-bottom: solid 4px black;
     bottom: -20px;
-    transform: translateZ(15px);
+    transform: translateZ(15px) rotateX(15deg);
     border-radius: 50px;
     transform-style: preserve-3d; }
