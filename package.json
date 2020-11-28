@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "chokidar": "^3.4.3",
+    "chokidar-cli": "^2.1.0",
+    "node-sass": "^4.14.0"
+  },
+  "scripts": {
+    "css": "node-sass css/style.scss dist/style.css",
+    "lint": "npx stylelint \"**/*.scss\" --fix",
+    "watch": "chokidar \"css/*.scss\" -c \"npm run css\"",
+    "run" : "python -m SimpleHTTPServer 8008"
+  },
+  "devDependencies": {
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0"
+  }
+}
