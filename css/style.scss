@@ -7,6 +7,17 @@
   --rotate-y: 0deg;
 }
 
+
+.log {
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: white;
+  background: black;
+  padding: 20px;
+
+}
+
 html {
   font-family: "Open Sans";
 }
