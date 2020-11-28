@@ -2,7 +2,7 @@ import * as Utils from './utils.js';
 
 let root = document.documentElement;
 
-let rotateParentEl = document.querySelector(".computer");
+let rotateParentEl = document.querySelector(".ralph");
 let rotateParent = {};
 let pos = rotateParentEl.getBoundingClientRect();
 
@@ -39,9 +39,9 @@ let CSSvars = [
             let xDeg = Utils.mapScale(dX, -windowWidth / 2,  windowWidth / 2 , -maxRotateAngle, maxRotateAngle);
             root.style.setProperty(this.variableName, -xDeg + "deg");
             if(xDeg > 0) {
-                document.querySelector("noseridge").setAttribute("direction","l");
+                document.querySelector("nose").setAttribute("direction","l");
             } else {
-                document.querySelector("noseridge").setAttribute("direction","r");
+                document.querySelector("nose").setAttribute("direction","r");
             }
         }
     }
@@ -65,10 +65,9 @@ window.addEventListener("resize", () => {
 function handleOrientation(event) {
   var x = event.beta;  // In degree in the range [-180,180]
   var y = event.gamma; // In degree in the range [-90,90]
-  console.log(x,y);
   root.style.setProperty("--rotate-x", 45 - x + "deg");
   root.style.setProperty("--rotate-y", y + "deg");
-  document.querySelector(".log").innerText = x + "," + y;
+  // document.querySelector(".log").innerText = x + "," + y;
  
 }
 

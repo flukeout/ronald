@@ -1,12 +1,5 @@
 @import "_include";
 
-:root {
-  --virtual-progress: 0;
-  --bar-width: 0%;
-  --rotate-x: 0deg;
-  --rotate-y: 0deg;
-}
-
 
 .log {
   position: fixed;
@@ -80,14 +73,8 @@ hr {
   justify-content: center;
 }
 
-.computer {
+.ralph {
   position: relative;
-}
-
-.wrapper {
-    // display: flex;
-  // align-items: center;
-  // justify-content: center;
 }
 
 $first: 25px;
@@ -198,7 +185,6 @@ noggin {
     }
   }
 
-
   backhair {
     position: absolute;
     width: 140%;
@@ -213,16 +199,16 @@ noggin {
 
   fronthair {
     position: absolute;
-    top: -20px;
+    top: -30px;
     width: 110%;
     left: -5%;
-    transform: translateZ(25px);
+    transform: translateZ(20px) rotateX(5deg);
     border-radius: 25px;
     transform-style: preserve-3d;
 
     bang {
       position: absolute;
-      height: 120px;
+      height: 130px;
       background: black;
       box-shadow: 0px 10px 0px rgba(0,0,0,.15);
       
@@ -254,19 +240,17 @@ noggin {
     box-sizing: border-box;
   }
 
-  noseridge {
+  nose {
     position: absolute;
     width: 20%;
     left: 40%;
     height: 100px;
     background: white;
-    
-    
-    
     box-sizing: border-box;
     top: 45%;
     transform: translateZ(35px) rotateX(20deg);
     border-radius: 0 0 50px 50px;
+    transform-style: preserve-3d;
 
     &[direction="r"] {
       border-right: solid 4px black;
@@ -275,7 +259,6 @@ noggin {
     &[direction="l"] {
       border-left: solid 4px black;
     }
-
   }
 
   mouth {
@@ -283,7 +266,7 @@ noggin {
     width: 50%;
     left: 25%;
     height: 100px;
-    background: #DDD;
+    background: rgba(0,0,0,.15);
     box-sizing: border-box;
     bottom: 30px;
     transform: translateZ($first);

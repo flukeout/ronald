@@ -1,123 +1,3 @@
-.build-history {
-  background: #eee;
-  padding: 15px 20px;
-  padding-left: 40px;
-  border-radius: 10px; }
-  .build-history .item-body {
-    position: relative;
-    border-radius: 6px;
-    background: white;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-    padding: 8px 10px;
-    font-family: "Roboto Mono", monospace, sans-serif;
-    font-size: 1rem;
-    color: rgba(0, 0, 0, 0.4);
-    white-space: nowrap; }
-    .build-history .item-body::before {
-      content: "";
-      position: absolute;
-      height: 14px;
-      width: 14px;
-      left: -4px;
-      top: calc(50% - 7px);
-      background: black;
-      transform: rotate(45deg);
-      background: white; }
-  .build-history .visible .item-body {
-    animation: bundlePop 0.25s ease-in-out; }
-  .build-history .item {
-    position: relative;
-    opacity: 0;
-    padding: 5px 0; }
-    .build-history .item:last-child {
-      margin: 0; }
-    .build-history .item.visible {
-      opacity: 1; }
-      .build-history .item.visible .name {
-        opacity: 1; }
-    .build-history .item .arrow {
-      position: absolute;
-      left: -20px;
-      height: 100%;
-      border-left: solid 2px #ccc;
-      top: 0; }
-      .build-history .item .arrow::before {
-        content: "";
-        position: absolute;
-        width: 6px;
-        height: 6px;
-        background: #ccc;
-        border-radius: 5px;
-        left: -4px;
-        top: calc(50% - 3px); }
-    .build-history .item:last-child .arrow {
-      height: 50%; }
-      .build-history .item:last-child .arrow::after {
-        height: 100%; }
-      .build-history .item:last-child .arrow::before {
-        top: calc(100% - 2px); }
-    .build-history .item .name {
-      display: inline-block;
-      overflow: hidden;
-      transition: max-width 0.3s ease-out;
-      transition-delay: 0.3s;
-      position: relative;
-      top: -2px;
-      width: auto;
-      font-size: 0.85rem;
-      color: rgba(0, 0, 0, 0.6); }
-    .build-history .item .action {
-      margin-left: auto;
-      position: relative;
-      top: 2px;
-      opacity: 0.5;
-      display: none; }
-    .build-history .item .icon {
-      height: 20px;
-      display: inline-block;
-      width: 20px;
-      border-radius: 10px;
-      margin-right: 0;
-      background: #35ce35;
-      color: white;
-      position: relative;
-      top: 1px; }
-    .build-history .item.added .action {
-      color: #60bf3e; }
-    .build-history .item.added .icon {
-      background-image: url(../img/circle-plus.svg); }
-    .build-history .item.changed .action {
-      color: #498fec; }
-    .build-history .item.changed .icon {
-      background: #3569c4;
-      background-image: url(../img/circle-change.svg); }
-    .build-history .item.removed .action {
-      color: #db3444; }
-    .build-history .item.removed .icon {
-      background-image: url(../img/circle-minus.svg); }
-    .build-history .item.visible .icon {
-      animation: iconAppear 0.3s ease-out; }
-    .build-history .item.visible .name {
-      max-width: 300px; }
-    .build-history .item .status {
-      margin-left: auto; }
-    .build-history .item img {
-      display: none;
-      margin-left: auto; }
-    .build-history .item.done {
-      color: rgba(0, 0, 0, 0.65); }
-      .build-history .item.done img {
-        opacity: 1;
-        animation: iconAppear 0.3s ease-out; }
-    .build-history .item:last-child {
-      border: none; }
-
-:root {
-  --virtual-progress: 0;
-  --bar-width: 0%;
-  --rotate-x: 0deg;
-  --rotate-y: 0deg; }
-
 .log {
   position: fixed;
   top: 0;
@@ -177,7 +57,7 @@ hr {
   align-items: center;
   justify-content: center; }
 
-.computer {
+.ralph {
   position: relative; }
 
 neck {
@@ -273,15 +153,15 @@ noggin {
     transform-style: preserve-3d; }
   noggin fronthair {
     position: absolute;
-    top: -20px;
+    top: -30px;
     width: 110%;
     left: -5%;
-    transform: translateZ(25px);
+    transform: translateZ(20px) rotateX(5deg);
     border-radius: 25px;
     transform-style: preserve-3d; }
     noggin fronthair bang {
       position: absolute;
-      height: 120px;
+      height: 130px;
       background: black;
       box-shadow: 0px 10px 0px rgba(0, 0, 0, 0.15); }
       noggin fronthair bang:first-child {
@@ -304,7 +184,7 @@ noggin {
     background: white;
     border-bottom: solid 4px black;
     box-sizing: border-box; }
-  noggin noseridge {
+  noggin nose {
     position: absolute;
     width: 20%;
     left: 40%;
@@ -313,17 +193,18 @@ noggin {
     box-sizing: border-box;
     top: 45%;
     transform: translateZ(35px) rotateX(20deg);
-    border-radius: 0 0 50px 50px; }
-    noggin noseridge[direction="r"] {
+    border-radius: 0 0 50px 50px;
+    transform-style: preserve-3d; }
+    noggin nose[direction="r"] {
       border-right: solid 4px black; }
-    noggin noseridge[direction="l"] {
+    noggin nose[direction="l"] {
       border-left: solid 4px black; }
   noggin mouth {
     position: absolute;
     width: 50%;
     left: 25%;
     height: 100px;
-    background: #DDD;
+    background: rgba(0, 0, 0, 0.15);
     box-sizing: border-box;
     bottom: 30px;
     transform: translateZ(25px);
