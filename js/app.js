@@ -2,46 +2,56 @@ import * as Utils from './utils.js';
 
 let root = document.documentElement;
 
-let rotateParentEl = document.querySelector(".ralph");
+let rotateParentEl = document.querySelector(".cowboy");
 let rotateParent = {};
-let pos = rotateParentEl.getBoundingClientRect();
 
 let windowHeight;
 let windowWidth;
+let rotators;
+let rotateEls;
+let maxRotateAngle = 25;
 
 const setParentDetails = () => {
-    pos = rotateParentEl.getBoundingClientRect();
-    rotateParent = {
-        centerX : pos.x + (pos.width / 2),
-        centerY : pos.y + (pos.height /2 )
-    }
+
+    rotateEls = document.querySelectorAll(".ralph, .cowboy");
+    rotators = [];
+
+    rotateEls.forEach(el => {
+        let pos = el.getBoundingClientRect();
+        rotators.push(
+            {
+                element : el,
+                centerX : pos.x + (pos.width / 2),
+                centerY : pos.y + (pos.height /2 )
+            }
+        )
+    });
 
     windowHeight = window.innerHeight;
     windowWidth = window.innerWidth;
 }
 
-let maxRotateAngle = 25;
 
 let CSSvars = [
     {
         variableName : "--rotate-x",
-        set : function (mouse)  {
-            let dY = rotateParent.centerY - mouse.clientY;
+        set : function (object, mouse)  {
+            let dY = object.centerY - mouse.clientY;
             let yDeg = Utils.mapScale(dY, -windowHeight / 2, windowHeight / 2, -maxRotateAngle, maxRotateAngle);
-            document.querySelector(".ralph").style.setProperty(this.variableName, yDeg + "deg");
+            object.element.style.setProperty(this.variableName, yDeg + "deg");
 
         }
     },
     {
         variableName : "--rotate-y",
-        set : function (mouse)  {
-            let dX = rotateParent.centerX - mouse.clientX;
+        set : function (object, mouse)  {
+            let dX = object.centerX - mouse.clientX;
             let xDeg = Utils.mapScale(dX, -windowWidth / 2,  windowWidth / 2 , -maxRotateAngle, maxRotateAngle);
-            document.querySelector(".ralph").style.setProperty(this.variableName, -xDeg + "deg");
+            object.element.style.setProperty(this.variableName, -xDeg + "deg");
             if(xDeg > 0) {
-                document.querySelector("nose").setAttribute("direction","l");
+                object.element.querySelector("nose").setAttribute("direction","l");
             } else {
-                document.querySelector("nose").setAttribute("direction","r");
+                object.element.querySelector("nose").setAttribute("direction","r");
             }
         }
     }
@@ -49,24 +59,27 @@ let CSSvars = [
 
 setParentDetails();
 
-window.addEventListener("mousemove", e => {
-    CSSvars.forEach(thisVar => {
-        thisVar.set(e);
-    })
-})
-
 window.addEventListener("resize", () => {
     setParentDetails();
 })
 
 
-function handleOrientation(event) {
-  var x = event.beta;  // In degree in the range [-180,180]
-  var y = event.gamma; // In degree in the range [-90,90]
-  document.querySelector(".ralph").setProperty("--rotate-x", 45 - x + "deg");
-  document.querySelector(".ralph").style.setProperty("--rotate-y", y + "deg");
-}
+window.addEventListener("mousemove", e => {
+    rotators.forEach(face => {
+        CSSvars.forEach(thisVar => {
+            thisVar.set(face, e);
+        });
+    });
+})
 
-if (window.DeviceOrientationEvent) {
-    window.addEventListener('deviceorientation', handleOrientation);
-}
+
+// function handleOrientation(event) {
+//   var x = event.beta;  // In degree in the range [-180,180]
+//   var y = event.gamma; // In degree in the range [-90,90]
+//   document.querySelector(".ralph").setProperty("--rotate-x", 45 - x + "deg");
+//   document.querySelector(".ralph").style.setProperty("--rotate-y", y + "deg");
+// }
+
+// if (window.DeviceOrientationEvent) {
+//     window.addEventListener('deviceorientation', handleOrientation);
+// }
